@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Simran 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #fff5f5, #fff0f7);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Poetry Card Design */
+        .poetry-card {
+            flex: 1;
+            background: url('https://img.freepik.com/free-photo/vintage-crumpled-paper-textured-background_53876-103940.jpg');
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transform: rotate(-2deg);
+            animation: cardFloat 8s ease-in-out infinite;
+            max-width: 500px;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: rotate(-2deg) translateY(0); }
+            50% { transform: rotate(2deg) translateY(-20px); }
+        }
+
+        .poetry-text {
+            font-family: 'Parisienne', cursive;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: #5c3b2d;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            opacity: 0;
+            animation: fadeInScroll 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInScroll {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Video Frame Design */
+        .video-frame {
+            flex: 1;
+            max-width: 300px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .video-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid #fff;
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Decorative Elements */
+        .rose-decoration {
+            position: absolute;
+            width: 100px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .heart-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            cursor: pointer;
+            animation: heartbeat 1.2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+
+        .heart-btn::after {
+            content: "❤️";
+            font-size: 2rem;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; align-items: center; }
+            .video-frame { max-width: 250px; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.freeiconspng.com/uploads/rose-png-5.png" class="rose-decoration" style="top: 10%; left: 5%">
+    <img src="https://www.freeiconspng.com/uploads/rose-png-5.png" class="rose-decoration" style="top: 70%; right: 5%; transform: scaleX(-1)">
+
+    <div class="container">
+        <!-- Poetry Card -->
+        <div class="poetry-card">
+            <div class="poetry-text">
+                <h2 style="text-align: center; margin-bottom: 2rem;">My Heart's Verse</h2>
+                <p>I met this woman whose smile could wake the skies,<br>
+Whose laughter could mend every broken goodbye.<br>
+But when a tear falls from her gentle eyes,<br>
+It feels like the whole world inside me dies.</p>
+
+<p>I’d fight her battles, take her pain as mine,<br>
+Trade every tomorrow just to see her shine.<br>
+When you shed a tear, I feel bad, I feel torn,<br>
+Like a rose losing color, like a heart being worn.</p>
+            </div>
+        </div>
+
+        <!-- Video Frame -->
+        <div class="video-frame">
+            <video autoplay muted loop>
+                <source src="your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="heart-btn" onclick="window.location.href='prem.html'"></div>
+
+    <script>
+        // Scroll-triggered animations
+        const poetryElements = document.querySelectorAll('.poetry-text p, .poetry-text br');
+        poetryElements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Interactive rose petals
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.querySelectorAll('.rose-decoration').forEach(rose => {
+                rose.style.transform = `translate(${x * 20 - 10}px, ${y * 20 - 10}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
